@@ -23,7 +23,10 @@
     "webpack": "^1.12.14"
   },
   "dependencies": {
+    "react": "^15.1.0",
+    "react-dom": "^15.1.0",
     "jupyter-js-widgets": "^1.1.1",
+    "vcs-widgets": "uv-cdat/vcs-widgets",
     "underscore": "^1.8.3"
   }
 }
