@@ -30,8 +30,10 @@ var GMView = widgets.DOMWidgetView.extend({
     },
     value_changed: function() {
         var gm = this.model.get("value");
-        function noop() {}
         var self = this;
+        function saveChanges() {
+            self.touch();
+        }
         function updateActiveGM(props) {
             self.model.set("value", props);
         }
@@ -43,7 +45,7 @@ var GMView = widgets.DOMWidgetView.extend({
             graphicsMethodParent: gm.g_name,
             gmProps: gm,
             graphicsMethods: gms,
-            updateGraphicsMethods: noop,
+            updateGraphicsMethods: saveChanges,
             updateActiveGM: updateActiveGM
         }
         var component = React.createElement(VCSWidgets.GMEdit, props);

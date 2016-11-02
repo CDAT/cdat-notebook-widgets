@@ -1,5 +1,5 @@
 import ipywidgets as widgets
-from traitlets import Unicode, Dict
+from traitlets import Unicode, Dict, validate
 import vcs
 import vcs.utils
 
@@ -16,3 +16,13 @@ class GMWidget(widgets.DOMWidget):
     _view_module = Unicode('cdat-notebook-widgets').tag(sync=True)
     _model_module = Unicode('cdat-notebook-widgets').tag(sync=True)
     value = Dict(get_dict(vcs.createboxfill())).tag(sync=True)
+
+    @validate("value")
+    def _validate_value(self, proposal):
+        value = proposal["value"]
+        converted = {}
+        for k, v in value.iteritems():
+            if v == 100000000000000000000L:
+                v = 1e20
+            converted[k] = v
+        return converted
