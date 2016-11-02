@@ -13,11 +13,12 @@ var VCSWidgets = require('vcs-widgets');
 // defaults will be specified.
 var GMModel = widgets.DOMWidgetModel.extend({
     defaults: _.extend({}, widgets.DOMWidgetModel.prototype.defaults, {
-        _model_name : 'GMModel',
-        _view_name : 'GMView',
-        _model_module : 'cdat-notebook-widgets',
-        _view_module : 'cdat-notebook-widgets',
-        value : {"g_name": "Gfb"},
+        _model_name: 'GMModel',
+        _view_name: 'GMView',
+        _model_module: 'cdat-notebook-widgets',
+        _view_module: 'cdat-notebook-widgets',
+        value: {"g_name": "Gfb"},
+        colormaps: ["default"]
     }),
 });
 
@@ -46,7 +47,8 @@ var GMView = widgets.DOMWidgetView.extend({
             gmProps: gm,
             graphicsMethods: gms,
             updateGraphicsMethods: saveChanges,
-            updateActiveGM: updateActiveGM
+            updateActiveGM: updateActiveGM,
+            colormaps: this.model.get("colormaps")
         }
         var component = React.createElement(VCSWidgets.GMEdit, props);
         ReactDOM.render(component, this.el);

@@ -1,5 +1,5 @@
 import ipywidgets as widgets
-from traitlets import Unicode, Dict, validate
+from traitlets import Unicode, Dict, validate, List
 import vcs
 import vcs.utils
 
@@ -16,6 +16,7 @@ class GMWidget(widgets.DOMWidget):
     _view_module = Unicode('cdat-notebook-widgets').tag(sync=True)
     _model_module = Unicode('cdat-notebook-widgets').tag(sync=True)
     value = Dict(get_dict(vcs.createboxfill())).tag(sync=True)
+    colormaps = List(vcs.listelements("colormap")).tag(sync=True)
 
     @validate("value")
     def _validate_value(self, proposal):
