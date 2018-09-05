@@ -1,3 +1,4 @@
+var path = require('path');
 var version = require('./package.json').version;
 
 // Custom webpack loaders are generally the same for all webpack bundles, hence
@@ -19,7 +20,7 @@ module.exports = [
         entry: './src/extension.js',
         output: {
             filename: 'extension.js',
-            path: '../cdat_notebook/static',
+            path: path.resolve(__dirname, '..', 'cdat_notebook', 'static'),
             libraryTarget: 'amd'
         }
     },
@@ -32,14 +33,14 @@ module.exports = [
         entry: './src/index.js',
         output: {
             filename: 'index.js',
-            path: '../cdat_notebook/static',
+            path: path.resolve(__dirname, '..', 'cdat_notebook', 'static'),
             libraryTarget: 'amd'
         },
         devtool: 'source-map',
         module: {
             loaders: loaders
         },
-        externals: ['@jupyter-widgets/base', '@jupyter-widgets/controls']
+        externals: ['@jupyter-widgets/base']
     },
     {// Embeddable cdat-notebook-widgets bundle
      //
@@ -58,7 +59,7 @@ module.exports = [
         entry: './src/embed.js',
         output: {
             filename: 'index.js',
-            path: './dist/',
+            path: path.resolve(__dirname, 'dist'),
             libraryTarget: 'amd',
             publicPath: 'https://unpkg.com/cdat-notebook-widgets@' + version + '/dist/'
         },
@@ -66,6 +67,6 @@ module.exports = [
         module: {
             loaders: loaders
         },
-        externals: ['@jupyter-widgets/base', '@jupyter-widgets/controls']
+        externals: ['@jupyter-widgets/base']
     }
 ];
