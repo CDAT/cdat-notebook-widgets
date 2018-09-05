@@ -15,6 +15,8 @@ class GMWidget(widgets.DOMWidget):
     _model_name = Unicode('GMModel').tag(sync=True)
     _view_module = Unicode('cdat-notebook-widgets').tag(sync=True)
     _model_module = Unicode('cdat-notebook-widgets').tag(sync=True)
+    _model_module_version = Unicode('1.0.0').tag(sync=True)
+    _view_module_version = Unicode('1.0.0').tag(sync=True)
     value = Dict(get_dict(vcs.createboxfill())).tag(sync=True)
     colormaps = List(vcs.listelements("colormap")).tag(sync=True)
 

@@ -1,7 +1,4 @@
-//var widgets = require('jupyter-js-widgets');
-require(['@jupyter-widgets/base'], function(widgets) {
-});
-import * as widgets from '@jupyter-widgets/base';
+var widgets = require('@jupyter-widgets/base');
 
 var _ = require('underscore');
 var React = require('react');
@@ -15,24 +12,35 @@ var VCSWidgets = require('vcs-widgets');
 //
 // When serialiazing entire widget state for embedding, only values different from the
 // defaults will be specified.
+
+define(["@jupyter-widgets/base"], function(widgets) { 
+
 var GMModel = widgets.DOMWidgetModel.extend({
-    defaults: _.extend({}, widgets.DOMWidgetModel.prototype.defaults, {
-        _model_name: 'GMModel',
-        _view_name: 'GMView',
-        _model_module: 'cdat-notebook-widgets',
-        _view_module: 'cdat-notebook-widgets',
-        _model_module_version : '~1.0.0',
-        _view_module_version : '~1.0.0',
-        value: {"g_name": "Gfb"},
-        colormaps: ["default"]
-    }),
+
+    var GmModel = widgets.DOMWidgetModel.extend({
+        defaults: _.extend(widgets.DOMWidgetModel.prototype.defaults, {
+            _model_name: 'GMModel',
+            _view_name: 'GMView',
+            _model_module: 'cdat-notebook-widgets',
+            _view_module: 'cdat-notebook-widgets',
+            _model_module_version : '~1.0.0',
+            _view_module_version : '~1.0.0',
+            value: {"g_name": "Gfb"},
+            colormaps: ["default"]
+        }),
+    });
+
+    return {
+        GmModel: GmModel
+    };
 });
+
 
 
 // Custom View. Renders the widget model.
 require.undef('gm');
 
-define('gm', ["@jupyter-widgets/base"], function(widgets) {
+define(["@jupyter-widgets/base"], function(widgets) {
 
     // Define the HelloView
     var GmView = widgets.DOMWidgetView.extend({
