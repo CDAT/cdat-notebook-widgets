@@ -39,7 +39,7 @@ module.exports = [
         module: {
             loaders: loaders
         },
-        externals: ['jupyter-js-widgets']
+        externals: ['@jupyter-widgets/base', '@jupyter-widgets/controls']
     },
     {// Embeddable cdat-notebook-widgets bundle
      //
@@ -66,6 +66,6 @@ module.exports = [
         module: {
             loaders: loaders
         },
-        externals: ['jupyter-js-widgets']
+        externals: ['@jupyter-widgets/base', '@jupyter-widgets/controls']
     }
 ];

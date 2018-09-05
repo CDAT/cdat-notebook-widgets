@@ -7,8 +7,7 @@ if (window.require) {
     window.require.config({
         map: {
             "*" : {
-                "cdat-notebook-widgets": "nbextensions/cdat-notebook-widgets/index",
-                "jupyter-js-widgets": "nbextensions/jupyter-js-widgets/extension"
+                "cdat-notebook-widgets": "nbextensions/cdat-notebook-widgets/index"
             }
         }
     });

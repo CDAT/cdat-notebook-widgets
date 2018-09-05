@@ -14,6 +14,8 @@ var HelloModel = widgets.DOMWidgetModel.extend({
         _view_name : 'HelloView',
         _model_module : 'cdat-notebook-widgets',
         _view_module : 'cdat-notebook-widgets',
+        _model_module_version : '~1.0.0',
+        _view_module_version : '~1.0.0',
         value : 'Hello World'
     })
 });
