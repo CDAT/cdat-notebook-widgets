@@ -25,7 +25,7 @@ class GMWidget(widgets.DOMWidget):
         value = proposal["value"]
         converted = {}
         for k, v in value.iteritems():
-            if v == 100000000000000000000L:
+            if v == 100000000000000000000:
                 v = 1e20
             converted[k] = v
         return converted
