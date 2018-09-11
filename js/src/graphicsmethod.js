@@ -16,7 +16,7 @@ var VCSWidgets = require('vcs-widgets');
 // When serialiazing entire widget state for embedding, only values different from the
 // defaults will be specified.
 
-var GmModel = widgets.DOMWidgetModel.extend({
+var GMModel = widgets.DOMWidgetModel.extend({
     defaults: _.extend(widgets.DOMWidgetModel.prototype.defaults(), {
         _model_name: 'GMModel',
         _view_name: 'GMView',
@@ -31,8 +31,7 @@ var GmModel = widgets.DOMWidgetModel.extend({
 
 // Custom View. Renders the widget model.
 
-    // Define the HelloView
-var GmView = widgets.DOMWidgetView.extend({
+var GMView = widgets.DOMWidgetView.extend({
     render: function () {
         this.value_changed();
         this.model.on('change:value', this.value_changed, this);
@@ -54,12 +53,13 @@ var GmView = widgets.DOMWidgetView.extend({
             graphicsMethodParent: gm.g_name,
             gmProps: gm,
             graphicsMethods: gms,
-            updateGraphicsMethods: saveChanges,
+            updateGraphicsMethod: saveChanges,
             updateActiveGM: updateActiveGM,
             colormaps: this.model.get("colormaps")
         }
-        var component = React.createElement(VCSWidgets.GMEdit, props);
-        ReactDOM.render(component, this.el);
+        var component = React.createElement(VCSWidgets.default.GMEdit, props);
+        ReactDOM.render(component, this.el); 
+       this.el.textContent = 'Hello World!';
     }
 });
 
