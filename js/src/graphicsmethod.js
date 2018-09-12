@@ -58,13 +58,16 @@ var GMView = widgets.DOMWidgetView.extend({
             colormaps: this.model.get("colormaps")
         }
         var component = React.createElement(VCSWidgets.default.GMEdit, props);
-        const element = (
-            <div>
-              <h1>Hello, world!</h1>
-              <h2>It is {new Date().toLocaleTimeString()}.</h2>
-            </div>
+        class Hello extends React.Component {
+            render() {
+              return React.createElement('div', null, ` ${this.props.toWhat}`);
+            }
+          }
+          
+          ReactDOM.render(
+            React.createElement(Hello, {toWhat: component}, null),
+            this.el
           );
-        ReactDOM.render(element, this.el);
         //ReactDOM.render(<h1>Hello, beuatiful world!</h1>, this.el);
         //this.el.textContent = 'Hello World!';
     }
