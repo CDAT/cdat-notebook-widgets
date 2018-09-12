@@ -38,10 +38,7 @@ jupyter nbextension enable --py --sys-prefix cdat_notebook
 
 ## Testing
 
-Go to vcs repo
 ```bash
-git checkout boxfill_widgets_jupyter
-python setup.py install --old-and-unmanageable
 jupyter-notebook  # jupyter-lab
-# Run the notebook `Untitled.ipynb
+# Run the notebook `SimpleCode.ipynb
 ```
