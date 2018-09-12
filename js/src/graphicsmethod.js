@@ -58,8 +58,15 @@ var GMView = widgets.DOMWidgetView.extend({
             colormaps: this.model.get("colormaps")
         }
         var component = React.createElement(VCSWidgets.default.GMEdit, props);
-        ReactDOM.render(component, this.el); 
-       this.el.textContent = 'Hello World!';
+        const element = (
+            <div>
+              <h1>Hello, world!</h1>
+              <h2>It is {new Date().toLocaleTimeString()}.</h2>
+            </div>
+          );
+        ReactDOM.render(element, this.el);
+        //ReactDOM.render(<h1>Hello, beuatiful world!</h1>, this.el);
+        //this.el.textContent = 'Hello World!';
     }
 });
 

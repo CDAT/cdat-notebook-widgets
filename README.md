@@ -8,7 +8,7 @@ Jupyter Widgets for CDAT
 ### The conda env
 
 ```bash
-conda create -n widgets3 -c cdat/label/nightly -c conda-forge -c cdat ipython nodejs vcs jupyterlab jupyter flake8 autopep8 pip nb_conda jupyterhub python=3
+conda create -n widgets3 -c cdat/label/nightly -c conda-forge -c cdat ipython nodejs vcs jupyterlab jupyter flake8 autopep8 pip nb_conda jupyterhub ipywidgets python=3
 source activate widgets3
 # Go to vcs repo 
 git checkout boxfill_widgets_jupyter
