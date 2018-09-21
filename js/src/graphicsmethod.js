@@ -30,8 +30,62 @@ var GMModel = widgets.DOMWidgetModel.extend({
 });
 
 // Custom View. Renders the widget model.
-
+const e = React.createElement
 var GMView = widgets.DOMWidgetView.extend({
+
+    initialize() {
+        const backbone = this;
+  
+        class Hello extends React.Component {
+          constructor(props) {
+            super(props);
+            this.state = {
+              value: backbone.model.get("value")
+            };
+          }
+  
+          onChange(model) {
+            this.setState(model.changed);
+          }
+  
+          componentDidMount() {
+            backbone.listenTo(backbone.model, "change", this.onChange.bind(this));
+          }
+  
+          render() {
+            //return e("h1", {}, `Hello ${this.state.value}`);
+            var gm = backbone.model.get("value");
+            var self = backbone;
+            function saveChanges() {
+                self.touch();
+            }
+            function updateActiveGM(props) {
+                self.model.set("value", props);
+            }
+            var gms = {}
+            gms[gm.g_name] = {}
+            gms[gm.g_name][gm.name] = gm;
+            var props = {
+                graphicsMethod: gm.name,
+                graphicsMethodParent: gm.g_name,
+                gmProps: gm,
+                graphicsMethods: gms,
+                updateGraphicsMethod: saveChanges,
+                updateActiveGM: updateActiveGM,
+                colormaps: backbone.model.get("colormaps")
+            }
+            return e(VCSWidgets.default.GMEdit,props)
+         }
+        }
+        const $app = document.createElement("div");
+        const App = e(Hello);
+        ReactDOM.render(App, $app);
+  
+        backbone.el.append($app);
+      }
+    });
+  
+    /*
     render: function () {
         this.value_changed();
         this.model.on('change:value', this.value_changed, this);
@@ -57,11 +111,15 @@ var GMView = widgets.DOMWidgetView.extend({
             updateActiveGM: updateActiveGM,
             colormaps: this.model.get("colormaps")
         }
+
+        const $app = document.createElement("div");
         var component = React.createElement(VCSWidgets.default.GMEdit, props);
-        ReactDOM.render(component, this.el); 
-        //this.el.textContent = 'Hello World!';
+        ReactDOM.render(component, $app); 
+        this.el.append($app)
+        
     }
 });
+*/
 
 module.exports = {
     GMModel : GMModel,

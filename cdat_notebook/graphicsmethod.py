@@ -24,7 +24,7 @@ class GMWidget(widgets.DOMWidget):
     def _validate_value(self, proposal):
         value = proposal["value"]
         converted = {}
-        for k, v in value.iteritems():
+        for k, v in value.items():
             if v == 100000000000000000000:
                 v = 1e20
             converted[k] = v
